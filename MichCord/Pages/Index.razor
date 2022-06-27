@@ -1,38 +1,14 @@
 ﻿@page "/"
-@using MichCordUI.Components
+@using MichCord.Components
 
 <PageTitle>Index</PageTitle>
 
 <h1>Welcome to MichCord!</h1>
 
-<<<<<<< HEAD
 <h1>Testing class libraries:</h1>
 <h3>Channel List</h3>
-<ChannelList Channels=@Channels>
-    <div>
-        @context.Name
-    </div>
-</ChannelList>
+<ChannelList/>
 
-@code {
-    /*
-    * 
-    * TESTING
-    * 
-    */
-    private IEnumerable<Channel> Channels;
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-        Channels = new Channel[]
-        {
-            new Channel {Name = "Foo"},
-            new Channel {Name = "Bar"},
-            new Channel {Name = "Baz"}
-        };
-    }
-}
-=======
 It's like discord, but for the cool Michelin peeps.
 
 Feel free to join a channel, write a direct message to a friend, or even make your own channel.
@@ -42,5 +18,3 @@ The time is now @time
 @code{
     string time = DateTime.Now.ToString();
 }
-
->>>>>>> f1ef19683658670de6ef2bdcce820826dd11dcc3

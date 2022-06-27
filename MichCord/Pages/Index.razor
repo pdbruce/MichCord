@@ -1,9 +1,33 @@
 ﻿@page "/"
+@using MichCordUI.Components
 
 <PageTitle>Index</PageTitle>
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
+<h1>Testing class libraries:</h1>
+<h3>Channel List</h3>
+<ChannelList Channels=@Channels>
+    <div>
+        @context.Name
+    </div>
+</ChannelList>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code {
+    /*
+    * 
+    * TESTING
+    * 
+    */
+    private IEnumerable<Channel> Channels;
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Channels = new Channel[]
+        {
+            new Channel {Name = "Foo"},
+            new Channel {Name = "Bar"},
+            new Channel {Name = "Baz"}
+        };
+    }
+}

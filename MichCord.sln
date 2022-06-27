@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MichCord", "MichCord\MichCord.csproj", "{DB87F58C-8249-490A-950D-8D77CA6FBBDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MichCordUI", "MichCordUI\MichCordUI.csproj", "{5339EB77-5E64-4D5D-91FB-3C5DA8D9CCEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DB87F58C-8249-490A-950D-8D77CA6FBBDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB87F58C-8249-490A-950D-8D77CA6FBBDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB87F58C-8249-490A-950D-8D77CA6FBBDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5339EB77-5E64-4D5D-91FB-3C5DA8D9CCEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5339EB77-5E64-4D5D-91FB-3C5DA8D9CCEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5339EB77-5E64-4D5D-91FB-3C5DA8D9CCEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5339EB77-5E64-4D5D-91FB-3C5DA8D9CCEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

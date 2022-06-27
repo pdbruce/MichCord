@@ -1,0 +1,17 @@
+﻿@typeparam TItem
+<nav>
+    <ul>
+        <!--null coalescing operator checks for empty array-->
+        @foreach(TItem channel in Channels ?? Array.Empty<TItem>())
+        {
+            <li>@ChildContent(channel)</li>
+        }
+    </ul>
+</nav>
+
+@code {
+    [Parameter]
+    public IEnumerable<TItem>? Channels { get; set; }
+    [Parameter]
+    public RenderFragment<TItem>? ChildContent { get; set; }
+}

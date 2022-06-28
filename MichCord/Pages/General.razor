@@ -1,6 +1,35 @@
 ﻿@page "/general"
-
+@using MichCord.Data
+@using System.Collections.Generic
 <PageTitle>General</PageTitle>
 
 <h1> General Channel</h1>
+<table class = 'table'>
+    <tbody>
+        @foreach(var chat in myMessages)
+        {
+            <tr>
+                <th>@chat.content</th>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<form>
+    <label for="Chat">Send Chat Message:</label>
+    <input type ="text" @bind="Chat" @bind:event="oninput" /> <br />
+    <input type ="button" value = "Send" @onclick="newMessage"/>
+</form>
 
+@code{
+    User user = new User("Patrick", "Bruce", "pdbruce");
+    List<Message> myMessages = new List<Message>();
+    private string? Chat{get; set;}
+    }
+    
+    @code{
+    public void newMessage()
+    {
+        myMessages.Add(new Message(Chat, user));
+    }
+}

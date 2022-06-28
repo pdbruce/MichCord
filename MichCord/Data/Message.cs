@@ -2,7 +2,7 @@
 {
     public class Message
     {
-        private string content { get; set; }
+        public string? content { get; set; }
       
         private DateTime timeSent { get; set; }
        
@@ -17,7 +17,7 @@
 
         }
 
-        public String toString()
+         public String printMessage()
         {
             return content;
         }

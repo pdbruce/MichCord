@@ -6,7 +6,7 @@
 
         private string lastName { get; set; }
 
-        private string userName { get; set; }
+        public string? userName { get; set; }
 
         public User(string firstName, string lastName, string username)
         {

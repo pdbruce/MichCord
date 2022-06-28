@@ -4,9 +4,9 @@
     {
         public string? content { get; set; }
       
-        private DateTime timeSent { get; set; }
+        public DateTime? timeSent { get; set; }
        
-        private User sender { get; set; }
+        public User? sender { get; set; }
 
         public Message(string content, User sender)
         {

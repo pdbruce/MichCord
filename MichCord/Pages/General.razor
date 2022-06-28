@@ -1,15 +1,18 @@
 ﻿@page "/general"
 @using MichCord.Data
 @using System.Collections.Generic
+@using System
 <PageTitle>General</PageTitle>
 
 <h1> General Channel</h1>
+<p>This is a good place to ask a question, view news and updates, or just say hi.</p>
 <table class = 'table'>
     <tbody>
         @foreach(var chat in myMessages)
         {
             <tr>
                 <th>@chat.content</th>
+                <th>@chat.sender.userName</th>
             </tr>
         }
     </tbody>

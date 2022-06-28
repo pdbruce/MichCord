@@ -1,0 +1,26 @@
+﻿@using MichCord.Data
+<nav>
+    <ul>
+    @foreach(Channel channel in Channels)
+    {
+       <li>
+           <div class="item-header">Header:@channel.Name</div>
+           <div class="item-body">Body:@channel.Description</div>
+       </li> 
+    }  
+   </ul>
+</nav>
+
+@code {
+    private IEnumerable<Channel> Channels;
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Channels = new Channel[]
+        {
+            new Channel {Name = "Foo", Description = "12345"},
+            new Channel {Name = "Bar", Description = "54321"},
+            new Channel {Name = "Baz", Description = "09876"}
+        };
+    }
+}

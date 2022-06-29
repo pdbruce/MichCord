@@ -1,0 +1,20 @@
+﻿@using MichCord.Data
+<div class="message-container">
+    <img class="img-avi" />
+    <div class="message-body">
+        <div class="message-header">
+            <a href="" title="@testMessage.sender.firstName @testMessage.sender.lastName">@testMessage.sender.userName</a>
+            <span>@testMessage.timeSent</span>
+        </div>
+        <p>@testMessage.content</p>
+    </div>
+</div>
+
+@code {
+    // TEST TEST TEST
+    static string testContent = "heyyy u up lol hahaaa";
+    static User testUser = new User("Tim", "Taylor", "The Toolman");
+    Message testMessage = new Message(
+        testContent,testUser
+    );
+}

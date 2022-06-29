@@ -2,17 +2,20 @@
 {
     public class User
     {
-        private string firstName { get; set; }
+        public string? firstName { get; set; }
 
-        private string lastName { get; set; }
+        public string? lastName { get; set; }
 
         public string? userName { get; set; }
+
+        public string? ID { get; set; }
 
         public User(string firstName, string lastName, string username)
         {
             this.firstName = firstName;
             this.lastName = lastName;
             this.userName = username;
+            ID = new Guid().ToString();
             return;
         }
 

@@ -22,3 +22,6 @@ img {
     aspect-ratio: 1;
     border-radius: 50%;
 }
+.message-body p {
+    word-break: break-word;
+}

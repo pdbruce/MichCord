@@ -17,7 +17,7 @@
         }
     </div>
     <form>
-        <input type="text" @bind="message" @bind:event="oninput" />
+        <textarea type="text" @bind="message" @bind:event="oninput"></textarea>
         <input type="button" value="Send" @onclick="sendMessage"/>
     </form>
 </div>
@@ -32,7 +32,7 @@
     {
         messages.Add(
             new Message(
-                "testing",
+                "hello and welcome to the channel",
                 new User("hi", "hey", "hello")
             )
         );

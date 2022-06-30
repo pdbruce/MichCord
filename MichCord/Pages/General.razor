@@ -1,5 +1,6 @@
 ﻿@page "/general"
 @using MichCord.Data
+@using MichCord.Components
 @using System.Collections.Generic
 @using System
 <PageTitle>General</PageTitle>
@@ -10,10 +11,19 @@
     <tbody>
         @foreach(var chat in myMessages)
         {
+            if(chat != null)
+            {
+                <MessageBody 
+                    messageContent="@chat.content"
+                    user="@chat.sender"
+                    timeSent="@chat.timeSent.ToString()"
+                /> 
+            }
             <tr>
                 <th>@chat.content</th>
                 <th>@chat.sender.userName</th>
             </tr>
+
         }
     </tbody>
 </table>

@@ -1,20 +1,27 @@
 ﻿@using MichCord.Data
-<div class="message-container">
+@if(user == null)
+{
+    <p>loading . . .</p>
+}else
+{
+    <div class="message-container">
     <img class="img-avi" />
     <div class="message-body">
         <div class="message-header">
-            <a href="" title="@testMessage.sender.firstName @testMessage.sender.lastName">@testMessage.sender.userName</a>
-            <span>@testMessage.timeSent</span>
+            <a href="" title="@user.firstName @user.lastName">@user.userName</a>
+            <span>@timeSent</span>
         </div>
-        <p>@testMessage.content</p>
+        <p>@messageContent</p>
     </div>
 </div>
+}
+
 
 @code {
-    // TEST TEST TEST
-    static string testContent = "heyyy u up lol hahaaa";
-    static User testUser = new User("Tim", "Taylor", "The Toolman");
-    Message testMessage = new Message(
-        testContent,testUser
-    );
+    [Parameter]
+    public string? messageContent { get; set; }
+    [Parameter]
+    public User? user { get; set; }
+    [Parameter]
+    public string? timeSent { get; set; }
 }

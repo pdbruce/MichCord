@@ -1,48 +1,13 @@
 ﻿@page "/general"
 @using MichCord.Data
-@using MichCord.Components
+@using MichCord.Components.Messages
+@using MichCord.Components.Channels
 @using System.Collections.Generic
 @using System
 <PageTitle>General</PageTitle>
 
-<h1> General Channel</h1>
-<p>This is a good place to ask a question, view news and updates, or just say hi.</p>
-<table class = 'table'>
-    <tbody>
-        @foreach(var chat in myMessages)
-        {
-            if(chat != null)
-            {
-                <MessageBody 
-                    messageContent="@chat.content"
-                    user="@chat.sender"
-                    timeSent="@chat.timeSent.ToString()"
-                /> 
-            }
-            <tr>
-                <th>@chat.content</th>
-                <th>@chat.sender.userName</th>
-            </tr>
+<ChannelBody 
+    channelHeader="General"
+    channelDescription="Talk some smack, yo."
+    />
 
-        }
-    </tbody>
-</table>
-<br />
-<form>
-    <label for="Chat">Send Chat Message:</label>
-    <input type ="text" @bind="Chat" @bind:event="oninput" /> <br />
-    <input type ="button" value = "Send" @onclick="newMessage"/>
-</form>
-
-@code{
-    User user = new User("Patrick", "Bruce", "pdbruce");
-    List<Message> myMessages = new List<Message>();
-    private string? Chat{get; set;}
-    }
-    
-    @code{
-    public void newMessage()
-    {
-        myMessages.Add(new Message(Chat, user));
-    }
-}

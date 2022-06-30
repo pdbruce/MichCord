@@ -1,0 +1,29 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+.channel-container {
+    position: relative;
+    height: 100%;
+}
+.channel-header{
+    display: flex;
+    gap: 1rem;
+    padding: .5rem;
+}
+.channel-header p {
+    margin-top: auto;
+}
+form {
+    position: absolute;
+    bottom: .5rem;
+    right: .5rem;
+    left: .5rem;
+    display: flex;
+    gap: .25rem;
+}
+textarea {
+    width: 100%;
+    height: 2rem;
+    resize: none;
+}

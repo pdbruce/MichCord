@@ -1,0 +1,48 @@
+﻿@using MichCord.Data
+@using MichCord.Components.Messages
+<div class="channel-container">
+    <div class="channel-header">
+        <h2>@channelHeader</h2>
+        <p>@channelDescription</p>
+    </div>
+
+    <div class="message-stream">
+        @foreach(var message in messages)
+        {
+            <MessageBody 
+                messageContent="@message.content"
+                user="@message.sender"
+                timeSent="@message.timeSent.ToString()"
+                />
+        }
+    </div>
+    <form>
+        <textarea type="text" @bind="message" @bind:event="oninput"></textarea>
+        <input type="button" value="Send" @onclick="sendMessage"/>
+    </form>
+</div>
+@code {
+    [Parameter]
+    public string? channelHeader { get; set; }
+    [Parameter]
+    public string? channelDescription { get; set; }
+
+    private List<Message> messages = new List<Message>();
+    protected override void OnInitialized()
+    {
+        messages.Add(
+            new Message(
+                "hello and welcome to the channel",
+                new User("hi", "hey", "hello")
+            )
+        );
+    }
+
+    User testUser = new User("Test", "User", "testuser");
+    private string? message { get; set; }
+    public void sendMessage()
+    {
+        messages.Add(new Message(message, testUser));
+        message = "";
+    }
+}

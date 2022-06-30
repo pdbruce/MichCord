@@ -1,12 +1,12 @@
 ﻿@using MichCord.Data
 <nav>
+    <h2>Channels</h2>
     <ul>
     @foreach(Channel channel in Channels)
     {
-       <li>
-           <div class="item-header">Header:@channel.Name</div>
-           <div class="item-body">Body:@channel.Description</div>
-       </li> 
+       <a href="@channel.Url" title="@channel.Description">
+           <NavLink># @channel.Name</NavLink>
+       </a> 
     }  
    </ul>
 </nav>
@@ -18,9 +18,9 @@
         base.OnInitialized();
         Channels = new Channel[]
         {
-            new Channel {Name = "Foo", Description = "12345"},
-            new Channel {Name = "Bar", Description = "54321"},
-            new Channel {Name = "Baz", Description = "09876"}
+            new Channel("Home", "", "Welcome Home"),
+            new Channel("General", "general", "General Chat"),
+            new Channel("Fetch Data", "fetchdata", "Fetch Some Data")
         };
     }
 }

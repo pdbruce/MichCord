@@ -1,9 +1,18 @@
-﻿ul {
+﻿* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
 }
-.item-header {
-    border: 1px solid red;
+a {
+    background: blue;
+    padding: .5rem .25rem;
 }
+a:hover {
+    background: red;
+}
+

@@ -1,0 +1,27 @@
+﻿@using MichCord.Data
+@if(user == null)
+{
+    <p>loading . . .</p>
+}else
+{
+    <div class="message-container">
+        <img class="img-avi" />
+        <div class="message-body">
+            <div class="message-header">
+                <a href="" title="@user.firstName @user.lastName">@user.userName</a>
+                <span>@timeSent</span>
+            </div>
+            <p>@messageContent</p>
+        </div>
+    </div>
+}
+
+
+@code {
+    [Parameter]
+    public string? messageContent { get; set; }
+    [Parameter]
+    public User? user { get; set; }
+    [Parameter]
+    public string? timeSent { get; set; }
+}

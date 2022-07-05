@@ -9,6 +9,7 @@ ul {
     flex-direction: column;
 }
 a {
+    color: white;
     background: blue;
     padding: .5rem .25rem;
 }

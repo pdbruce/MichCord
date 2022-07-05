@@ -1,5 +1,6 @@
 ﻿@using MichCord.Data
 <nav>
+    <p>MichCord</p>
     <h2>Channels</h2>
     <ul>
     @foreach(Channel channel in Channels)
@@ -20,6 +21,7 @@
         {
             new Channel("Home", "", "Welcome Home"),
             new Channel("General", "general", "General Chat"),
+            new Channel("Film & TV", "filmtv", "Film & TV"),
             new Channel("Fetch Data", "fetchdata", "Fetch Some Data")
         };
     }

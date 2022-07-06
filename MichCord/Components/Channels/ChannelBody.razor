@@ -1,9 +1,10 @@
 ﻿@using MichCord.Data
 @using MichCord.Components.Messages
+@inject AppMeta meta
 <div class="channel-container">
     <div class="channel-header">
-        <h2>@channelHeader</h2>
-        <p>@channelDescription</p>
+        <h2>@meta.CurrentChannel.Name</h2>
+        <p>@meta.CurrentChannel.Description</p>
     </div>
 
     <div class="message-stream">
@@ -22,15 +23,13 @@
     </form>
 </div>
 @code {
-    [Parameter]
-    public string? channelHeader { get; set; }
-    [Parameter]
-    public string? channelDescription { get; set; }
+    //TODO:
+    // sketch some logic for loading messages from db
 
-    private List<Message> messages = new List<Message>();
     protected override void OnInitialized()
     {
-        messages.Add(
+        meta.Notify += () => InvokeAsync(StateHasChanged);
+                messages.Add(
             new Message(
                 "hello and welcome to the channel",
                 new User("hi", "hey", "hello")
@@ -38,6 +37,7 @@
         );
     }
 
+    private List<Message> messages = new List<Message>();
     User testUser = new User("Test", "User", "testuser");
     private string? message { get; set; }
     public void sendMessage()

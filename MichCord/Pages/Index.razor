@@ -1,20 +1,20 @@
 ﻿@page "/"
 @using MichCord.Components.Channels
+@inject Data.AppMeta meta
 
 <PageTitle>Index</PageTitle>
 
 <h1>Welcome to MichCord!</h1>
-
-ChannelList widget:
-<ChannelList/>
-Message widget:
-<MessageBody/>
 
 It's like discord, but for the cool Michelin peeps.
 
 Feel free to join a channel, write a direct message to a friend, or even make your own channel.
 
 The time is now @time
+
+<ChannelBody 
+
+    />
 
 @code{
     string time = DateTime.Now.ToString();

@@ -1,28 +1,22 @@
 ﻿@using MichCord.Data
+@inject DummyChannelData data
+@inject AppMeta meta
 <nav>
     <p>MichCord</p>
     <h2>Channels</h2>
     <ul>
-    @foreach(Channel channel in Channels)
+    @foreach(Channel channel in @data.channels)
     {
-       <a href="@channel.Url" title="@channel.Description">
-           <NavLink># @channel.Name</NavLink>
+       <a onclick=@(() => handleClick(channel))>
+           # @channel.Name
        </a> 
     }  
    </ul>
 </nav>
 
 @code {
-    private IEnumerable<Channel> Channels;
-    protected override void OnInitialized()
+    public void handleClick(Channel channel)
     {
-        base.OnInitialized();
-        Channels = new Channel[]
-        {
-            new Channel("Home", "", "Welcome Home"),
-            new Channel("General", "general", "General Chat"),
-            new Channel("Film & TV", "filmtv", "Film & TV"),
-            new Channel("Fetch Data", "fetchdata", "Fetch Some Data")
-        };
+        meta.CurrentChannel = channel;
     }
 }

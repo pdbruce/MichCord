@@ -25,10 +25,14 @@
                 timeSent="@message.timeSent.ToString()"
                 />
         }
+        <div class="gap">say something nice...</div>
     </div>
-    <form>
-        <textarea type="text" @bind="message" @bind:event="oninput"></textarea>
-        <input type="button" value="Send" @onclick="sendMessage"/>
+    <form @onsubmit="sendMessage">
+        <div class="message-box">
+            <input class="message-input" type="text" @bind="message" @bind:event="oninput"/>
+            <button type="submit">Send</button>
+        </div>
+
     </form>
     }
 
@@ -51,9 +55,12 @@
 
     User testUser = new User("Test", "User", "testuser");
     private string? message { get; set; }
-    public void sendMessage()
+    [Inject]
+    public IJSRuntime js { get; set; }
+    public async void sendMessage()
     {
         messages.Add(new Message(message, testUser));
         message = "";
+        await js.InvokeVoidAsync("handleSendMessage");
     }
 }

@@ -1,12 +1,21 @@
 ﻿@using MichCord.Data
 @using MichCord.Components.Messages
 @inject AppMeta meta
+@inject DummyMessageData dummyMessages
+
 <div class="channel-container">
     <div class="channel-header">
         <h2>@meta.CurrentChannel.Name</h2>
         <p>@meta.CurrentChannel.Description</p>
     </div>
 
+    @if(messages == null)
+    {
+        <div class="spinner">
+            loading . . .
+        </div>
+    } else
+    {
     <div class="message-stream">
         @foreach(var message in messages)
         {
@@ -21,23 +30,25 @@
         <textarea type="text" @bind="message" @bind:event="oninput"></textarea>
         <input type="button" value="Send" @onclick="sendMessage"/>
     </form>
+    }
+
 </div>
 @code {
     //TODO:
     // sketch some logic for loading messages from db
-
+    private List<Message> messages;
     protected override void OnInitialized()
     {
-        meta.Notify += () => InvokeAsync(StateHasChanged);
-                messages.Add(
-            new Message(
-                "hello and welcome to the channel",
-                new User("hi", "hey", "hello")
-            )
-        );
+        // Assign Notify event to StateHasChanged()
+        // Now this event will be triggered every time AppMeta's set fxn fires
+        meta.Notify += () => { 
+            InvokeAsync(StateHasChanged);
+            messages = dummyMessages.messages[meta.CurrentChannel.Name];
+        };
+
+        messages = dummyMessages.messages[meta.CurrentChannel.Name];
     }
 
-    private List<Message> messages = new List<Message>();
     User testUser = new User("Test", "User", "testuser");
     private string? message { get; set; }
     public void sendMessage()

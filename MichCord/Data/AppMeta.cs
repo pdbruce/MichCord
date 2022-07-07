@@ -13,9 +13,11 @@
             set
             {
                 currentChannel = value;
+                // Invoke custom event on set()
                 Notify?.Invoke();
             }
         }
+        // Custom event
         public event Action Notify;
     }
 }

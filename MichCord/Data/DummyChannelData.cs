@@ -4,9 +4,9 @@
     {
         public Channel[] channels = new Channel[]
         {
-            new Channel("Home", "Welcome Home"),
-            new Channel("General", "General Chat"),
-            new Channel("Film & TV", "Film & TV"),
+            new Channel("General", "General chat, go nuts."),
+            new Channel("Film & TV", "Film and television discussion."),
+            new Channel("Gaming", "Video games, tabletop, whatever.")
         };
 
     }

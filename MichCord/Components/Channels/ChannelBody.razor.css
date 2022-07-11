@@ -31,6 +31,9 @@
 .gap:hover {
     opacity: .5;
 }
+.gap, .gap:hover {
+    transition: all 500ms ease;
+}
 form {
     margin: 0 1rem;
     display: flex;

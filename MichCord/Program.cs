@@ -7,10 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-// builder.Services.AddSingleton<WeatherForecastService>();
+// add meta app information for routing state handling
+builder.Services.AddSingleton<AppMeta>();
+// add dummy data singletons for testing
 builder.Services.AddSingleton<DummyChannelData>();
 builder.Services.AddSingleton<DummyMessageData>();
-builder.Services.AddSingleton<AppMeta>();
+// add dbcontext
+builder.Services.AddDbContext<MichcordContext>();
 
 var app = builder.Build();
 

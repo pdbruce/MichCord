@@ -2,13 +2,16 @@
 {
     public class User
     {
+        public string? ID { get; set; }
+
         public string? firstName { get; set; }
 
         public string? lastName { get; set; }
 
         public string? userName { get; set; }
 
-        public string? ID { get; set; }
+        public List<Message> Messages { get; set; }
+
 
         public User(string firstName, string lastName, string username)
         {

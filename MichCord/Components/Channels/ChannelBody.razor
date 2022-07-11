@@ -40,6 +40,9 @@
 @code {
     //TODO:
     // sketch some logic for loading messages from db
+    [Inject]
+    private MichcordContext _messages { get; set; }
+
     private List<Message> messages;
     protected override void OnInitialized()
     {
@@ -50,7 +53,11 @@
             messages = dummyMessages.messages[meta.CurrentChannel.Name];
         };
 
+        // Load dummy data from singleton
         messages = dummyMessages.messages[meta.CurrentChannel.Name];
+
+        // Test db
+        _messages.Database.EnsureCreated();
     }
 
     User testUser = new User("Test", "User", "testuser");

@@ -3,6 +3,9 @@
     margin: 0;
     text-decoration: none;
 }
+nav {
+    padding: .5rem;
+}
 ul {
     list-style: none;
     display: flex;
@@ -12,6 +15,7 @@ a {
     color: white;
     background: blue;
     padding: .5rem .25rem;
+    border-radius: .25rem;
 }
 a:hover {
     background: red;

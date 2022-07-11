@@ -7,6 +7,8 @@
         public DateTime? timeSent { get; set; }
        
         public User? sender { get; set; }
+        public int UserID { get; set; }
+        public int ChannelID { get; set; }
 
         public Message(string content, User sender)
         {

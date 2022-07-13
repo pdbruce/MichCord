@@ -3,7 +3,7 @@
     public class AppMeta
     {
         private static DummyChannelData data = new DummyChannelData();
-        private Channel currentChannel = data.channels[0];
+        private Channel currentChannel = data.Channels[0];
         public Channel CurrentChannel
         {
             get

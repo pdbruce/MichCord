@@ -1,6 +1,7 @@
 ﻿@using MichCord.Data
 @using MichCord.Components.Messages
 @inject AppMeta meta
+@inject DummyChannelData data
 @inject DummyMessageData dummyMessages
 
 <div class="channel-container">
@@ -40,24 +41,25 @@
 @code {
     //TODO:
     // sketch some logic for loading messages from db
-    [Inject]
-    private MichcordContext _messages { get; set; }
+    //[Inject]
+    //private MichcordContext _messages { get; set; }
 
     private List<Message> messages;
     protected override void OnInitialized()
     {
         // Assign Notify event to StateHasChanged()
         // Now this event will be triggered every time AppMeta's set fxn fires
-        meta.Notify += () => { 
+        meta.Notify += () => {
             InvokeAsync(StateHasChanged);
             messages = dummyMessages.messages[meta.CurrentChannel.Name];
         };
+
 
         // Load dummy data from singleton
         messages = dummyMessages.messages[meta.CurrentChannel.Name];
 
         // Test db
-        _messages.Database.EnsureCreated();
+        //_messages.Database.EnsureCreated();
     }
 
     User testUser = new User("Test", "User", "testuser");

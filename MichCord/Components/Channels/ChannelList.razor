@@ -1,22 +1,68 @@
 ﻿@using MichCord.Data
 @inject DummyChannelData data
+@inject DummyMessageData dummyMessages
 @inject AppMeta meta
 <nav>
     <p>MichCord</p>
     <h3>Channels</h3>
     <ul>
-    @foreach(Channel channel in @data.channels)
+    @foreach(Channel channel in channels)
     {
        <a onclick=@(() => handleClick(channel))>
            # @channel.Name
        </a> 
     }  
    </ul>
+   <button @onclick="handleShowDialog">+</button>
+@if(@showDialog)
+{
+    <label>Channel Name<input type="text" @bind-value="channelName"/></label>
+    <label>Channel Description<input type="text" @bind-value="channelDescription"/></label>
+    <button @onclick="handleAddChannel">Add</button>
+} else
+{
+    
+}
 </nav>
 
 @code {
+
+    private List<Channel> channels;
+    protected override void OnInitialized()
+    {
+        data.Notify += () =>
+        {
+            InvokeAsync(StateHasChanged);
+            channels = data.Channels;
+        };
+        // Load dummy data
+        channels = data.Channels;
+    }
+    // Change state of channel
     public void handleClick(Channel channel)
     {
         meta.CurrentChannel = channel;
+    }
+    // Add channel dialog and logic
+    private bool showDialog = false;
+
+    private string channelName { get; set; }
+    private string channelDescription { get; set; }
+
+    private void handleShowDialog()
+    {
+        showDialog = true;
+    }
+    private void handleAddChannel()
+    {
+        // TODO: add logic to sanitize input, e.g. no blanks
+        Channel toAdd = new Channel(channelName, channelDescription);
+        channels.Add(toAdd);
+        data.Channels = channels;
+        dummyMessages.GenerateNewChannelMessages(toAdd);
+        channelName = "";
+        channelDescription = "";
+        showDialog = false;
+        Console.WriteLine(channels.Count());
     }
 }
